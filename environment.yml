@@ -13,3 +13,4 @@ dependencies:
   - pydantic==2.0
   - scipy>=1.0
   - SimpleITK>=2.0
+  - pymirc
