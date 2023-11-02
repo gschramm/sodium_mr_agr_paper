@@ -1,7 +1,12 @@
-"""
-    data_root_dir / tpi_gradients / ak_grad56.wav
-    data_root_dir / brainweb54 / 'subject54_t1w_p4_resampled.nii.gz'
-    data_root_dir / brainweb54 / 'subject54_crisp_v.nii.gz'
+""" anatomically-guided dual echo sodium MR reconstruction of simulated brainweb data 
+
+    input data that we need:
+        - data / brainweb54 / 'subject54_t1w_p4_resampled.nii.gz'
+        - data / brainweb54 / 'subject54_crisp_v.nii.gz'
+          -> availalbe at https://brainweb.bic.mni.mcgill.ca/anatomic_normal_20.html (subject54)
+          -> convert to .nii.gz and resample the T1w to the grid of the crip_v image
+        - data / tpi_gradients / ak_grad56.wav
+          -> TPI gradient file (contained in this repository)
 """
 from __future__ import annotations
 
@@ -21,7 +26,7 @@ from utils_sigpy import NUFFTT2starDualEchoModel, projected_gradient_operator
 #--------------------------------------------------------------------------
 
 parser = argparse.ArgumentParser()
-parser.add_argument('--data_root_dir', help = 'directory containing the input data')
+parser.add_argument('--data_root_dir', default = './data', help = 'directory containing the input data')
 parser.add_argument('--max_num_iter', type=int, default=2000)
 parser.add_argument('--num_iter_r', type=int, default=100)
 parser.add_argument('--noise_level', type=float, default=1e-2)
@@ -339,8 +344,13 @@ with open(odir / 'scaling_factors.json', 'w') as f:
             'acq_model_scale': acq_model.scale
         }, f)
 
-#------------------------------------------------------
-# reconstruct the first echo without T2* decay modeling
+#---------------------------------------------------------------------------------
+#---------------------------------------------------------------------------------
+#---------------------------------------------------------------------------------
+# "conventional recons" (CR) without decay modeling and qudratic prior
+#---------------------------------------------------------------------------------
+#---------------------------------------------------------------------------------
+#---------------------------------------------------------------------------------
 
 A = sigpy.linop.Vstack([nufft_echo1_no_decay, G])
 A2 = sigpy.linop.Vstack([nufft_echo2_no_decay, G])
@@ -428,9 +438,15 @@ else:
 del A
 del A2
 
-#---------------------------------------------------------------------
-# projected gradient operator that we need for DTV
+#---------------------------------------------------------------------------------
+#---------------------------------------------------------------------------------
+#---------------------------------------------------------------------------------
+# anatomically-guided recon (AGR) without decay modeling
+#---------------------------------------------------------------------------------
+#---------------------------------------------------------------------------------
+#---------------------------------------------------------------------------------
 
+# projected gradient operator that we need for DTV
 t1_image /= np.percentile(t1_image, 99.9)
 
 prior_image = cp.asarray(zoom3d(t1_image, ishape[0] / sim_shape[0]))
@@ -522,7 +538,13 @@ del A2
 del nufft_echo1_no_decay
 del nufft_echo2_no_decay
 
-#-------------------------------------------------------------------------
+#---------------------------------------------------------------------------------
+#---------------------------------------------------------------------------------
+#---------------------------------------------------------------------------------
+# anatomically-guided recon (AGRdm) with decay estimation and modeling
+#---------------------------------------------------------------------------------
+#---------------------------------------------------------------------------------
+#---------------------------------------------------------------------------------
 # calculate the ratio between the two recons without T2* decay modeling
 # to estimate a monoexponential T2*
 

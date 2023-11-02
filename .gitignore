@@ -161,3 +161,4 @@ cython_debug/
 
 # user defined ignores
 data/brainweb54/*
+data/run_brainweb/*
