@@ -1,2 +1,5 @@
-# sodium_mr_agr_paper
-source code for the 2023 paper on sodium anatomically-guided MR reconstruction
+# Source code for dual echo anatomically guided MR reconstruction and joint decay estimation
+
+This repository will contain the source code for our paper on
+dual echo anatomically guided MR reconstruction and joint decay estimation upon formal
+acceptance of our manuscript submitted to MRM
