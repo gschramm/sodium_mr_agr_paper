@@ -13,3 +13,4 @@ dependencies:
   - scipy>=1.0
   - SimpleITK>=2.0
   - pymirc
+  - seaborn
