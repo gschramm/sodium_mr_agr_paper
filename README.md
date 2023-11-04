@@ -21,3 +21,11 @@ conda env create -f environment.yml
     convert all images to .nii.gz and resample the T1w to the grid of the crisp_v image.
     Save the files to `data / brainweb54 / 'subject54_t1w_p4_resampled.nii.gz'`
     and `data / brainweb54 / 'subject54_crisp_v.nii.gz'`
+
+## Running reconstructions
+
+Use the script `00_reconstruction_brainweb.py` to run a single noise realization of the brainweb sodium MR
+reconstructions. Use `01_analyze_brainweb.py` to analyze the results (of multiple realizations).
+
+`02_reconstruction_real_data.py` can be used to reconstruct real TPI data. See the header of the file
+for the required input files.
