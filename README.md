@@ -1,8 +1,26 @@
 # Source code for dual echo anatomically guided MR reconstruction and joint decay estimation
 
-This repository will contain the source code for our paper on
-dual echo anatomically guided MR reconstruction and joint decay estimation upon formal
-acceptance of our manuscript submitted to MRM
+This repository containd the source code of our paper 
+"Resolution enhancement, noise suppression, and joint T2* decay estimation in dual-echo sodium-23 MR imaging using anatomically guided reconstruction"
+published in Magnetic Resonance in Medicine in Dec 2023 [link](https://onlinelibrary.wiley.com/doi/10.1002/mrm.29936).
+The accepted version of the paper is also freely available on arxiv [link](https://arxiv.org/abs/2311.03116).
+
+Re-use of our code and results are very welcome, using a refernce to our paper
+
+*Schramm G, Filipovic M, Qian Y, et al. Resolution enhancement, noise suppression, and joint T2\* decay estimation in dual-echo sodium-23 MR imaging using anatomically guided reconstruction. Magn Reson Med. 2023; 1-15. doi: 10.1002/mrm.29936*
+
+
+```bibtex
+@article{https://doi.org/10.1002/mrm.29936,
+author = {Schramm, Georg and Filipovic, Marina and Qian, Yongxian and Alivar, Alaleh and Lui, Yvonne W. and Nuyts, Johan and Boada, Fernando},
+title = {Resolution enhancement, noise suppression, and joint T2* decay estimation in dual-echo sodium-23 MR imaging using anatomically guided reconstruction},
+journal = {Magnetic Resonance in Medicine},
+keywords = {anatomical priors, brain, iterative reconstruction, quantification, sodium MR},
+doi = {https://doi.org/10.1002/mrm.29936},
+url = {https://onlinelibrary.wiley.com/doi/abs/10.1002/mrm.29936},
+eprint = {https://onlinelibrary.wiley.com/doi/pdf/10.1002/mrm.29936},
+}
+```
 
 
 ## Setup
